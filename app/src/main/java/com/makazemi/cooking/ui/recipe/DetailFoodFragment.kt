@@ -1,0 +1,74 @@
+package com.makazemi.cooking.ui.recipe
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.RequestManager
+import com.makazemi.cooking.R
+import com.makazemi.cooking.databinding.FragmentDetailFoodBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
+@AndroidEntryPoint
+class DetailFoodFragment : Fragment() {
+
+    private val args:DetailFoodFragmentArgs by navArgs()
+
+    private lateinit var rawMaterialAdapter: RawMaterialAdapter
+
+    @Inject
+    lateinit var requestManager: RequestManager
+
+
+    private var _binding: FragmentDetailFoodBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentDetailFoodBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
+    }
+
+    private fun init(){
+        binding.txtTitle.text= args.foodArg.name
+        binding.txtCategory.text=args.foodArg.category_name
+        binding.txtDscRecipe.text=args.foodArg.recipe
+        binding.txtName.text= args.foodArg.name
+        requestManager.load(args.foodArg.image)
+            .error(R.drawable.placeholder)
+            .placeholder(R.drawable.placeholder)
+            .into(binding.imgFood)
+        binding.imgBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        initRcy()
+    }
+
+    private fun initRcy(){
+        rawMaterialAdapter= RawMaterialAdapter()
+        binding.rcyItem.apply {
+            layoutManager=LinearLayoutManager(requireContext())
+            adapter=rawMaterialAdapter
+        }
+        rawMaterialAdapter.submitList(args.foodArg.raw_material)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+}

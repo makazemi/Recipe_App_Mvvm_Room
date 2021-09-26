@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Cooking</string>
+    <string name="profile">پروفایل</string>
+    <string name="what_should_cook">چی بپزم</string>
+    <string name="search">جستجو</string>
+    <string name="recipe">دستورپخت</string>
+    <string name="language">زبان</string>
+    <string name="size_text">سایز متن</string>
+    <string name="dark_mode">حالت شب</string>
+    <string name="clear_cache">پاکسازی حافظه</string>
+    <string name="login">ورود</string>
+    <string name="raw_material">مواد اولیه</string>
+    <string name="name_of_food">نام غذا</string>
+    <string name="category">دسته بندی</string>
+    <string name="name_of_category">نام دسته بندی</string>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_recipe"
+    app:startDestination="@id/listCategoryFragment">
+
+    <fragment
+        android:id="@+id/listCategoryFragment"
+        android:name="com.makazemi.cooking.ui.listCategory.ListCategoryFragment"
+        android:label="fragment_list_category"
+        tools:layout="@layout/fragment_list_category" >
+        <action
+            android:id="@+id/action_listCategoryFragment_to_listFoodFragment"
+            app:destination="@id/listFoodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFoodFragment"
+        android:name="com.makazemi.cooking.ui.recipe.ListFoodFragment"
+        android:label="fragment_list_food"
+        tools:layout="@layout/fragment_list_food" >
+        <action
+            android:id="@+id/action_listFoodFragment_to_detailFoodFragment"
+            app:destination="@id/detailFoodFragment" />
+        <argument
+            android:name="categoryArg"
+            app:argType="com.makazemi.cooking.model.CategoryFood" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFoodFragment"
+        android:name="com.makazemi.cooking.ui.recipe.DetailFoodFragment"
+        android:label="fragment_detail_food"
+        tools:layout="@layout/fragment_detail_food" >
+        <argument
+            android:name="foodArg"
+            app:argType="com.makazemi.cooking.model.Food" />
+    </fragment>
+</navigation>

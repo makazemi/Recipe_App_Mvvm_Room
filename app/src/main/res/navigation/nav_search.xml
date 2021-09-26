@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_search"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.makazemi.cooking.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailFoodFragment2"
+            app:destination="@id/detailFoodFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFoodFragment2"
+        android:name="com.makazemi.cooking.ui.recipe.DetailFoodFragment"
+        android:label="DetailFoodFragment" >
+        <argument
+            android:name="foodArg"
+            app:argType="com.makazemi.cooking.model.Food" />
+    </fragment>
+</navigation>
