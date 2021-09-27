@@ -63,9 +63,4 @@ class FoodAdapter(private val requestManager: RequestManager) : ListAdapter<Food
         val item = getItem(position)
         holder.bind(item)
     }
-
-    fun submitNewList(list:List<Food>){
-        submitList(list)
-        notifyDataSetChanged()
-    }
 }

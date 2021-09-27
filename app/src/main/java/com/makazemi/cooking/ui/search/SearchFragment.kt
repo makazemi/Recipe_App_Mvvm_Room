@@ -79,7 +79,7 @@ class SearchFragment : Fragment() {
     private fun subscribeObserverFood(){
         viewModel.foods.observe(viewLifecycleOwner){
             it?.data?.peekContent()?.let {
-                foodAdapter.submitNewList(it)
+                foodAdapter.submitList(it)
                 Timber.d("list=$it")
             }
             it.error?.getContentIfNotHandled()?.message?.let {
